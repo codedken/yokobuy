@@ -96,7 +96,6 @@ const Register = () => {
                     href="/login"
                     className="hover:underline hover:text-primary"
                   >
-                    {" "}
                     Login here
                   </Link>
                 </span>

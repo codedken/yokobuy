@@ -64,7 +64,6 @@ const Login = () => {
                     href="/register"
                     className="hover:underline hover:text-primary"
                   >
-                    {" "}
                     Register here
                   </Link>
                 </span>
