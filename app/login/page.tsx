@@ -18,8 +18,8 @@ const Login = () => {
             </h5>
             <p className="text-lg">
               By creating an account you will be able to shop faster, be up to
-              date on an order\'s status, and keep track of the orders you have
-              previously made.
+              date on an order&apos;s status, and keep track of the orders you
+              have previously made.
             </p>
             <Link href="/register">
               <Button
@@ -59,7 +59,7 @@ const Login = () => {
                   <span>Forgot Password?</span>
                 </Link>
                 <span>
-                  Don\'t have an account?
+                  Don&apos;t have an account?
                   <Link
                     href="/register"
                     className="hover:underline hover:text-primary"
