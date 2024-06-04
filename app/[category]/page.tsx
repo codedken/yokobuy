@@ -47,7 +47,7 @@ export default async function CategoryPage({
         lg:grid-cols-4 xl:gap-x-8"
         >
           {data.map((product) => (
-            <ProductCard product={product} key={product._id} />
+            <ProductCard product={product} dimension={""} key={product._id} />
           ))}
         </div>
       </div>

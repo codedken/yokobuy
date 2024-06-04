@@ -8,7 +8,13 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useShoppingCart } from "use-shopping-cart";
 
-const ProductCard = ({ product }: any) => {
+const ProductCard = ({
+  product,
+  dimension,
+}: {
+  product: any;
+  dimension: any;
+}) => {
   const { addItem } = useShoppingCart();
 
   const [qty, setQty] = useState(1);
@@ -33,8 +39,8 @@ const ProductCard = ({ product }: any) => {
   return (
     <div className="group relative">
       <div
-        className="relative w-[18rem] h-[18rem] overflow-hidden 
-                 lg:h-80"
+        className={`relative ${dimension} overflow-hidden 
+                 lg:h-80`}
       >
         <Link href={`/product/${product.slug}`}>
           <Image

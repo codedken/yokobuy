@@ -53,10 +53,18 @@ export default async function Newest() {
             className={`slide-track flex gap-2 lg:w-[calc(336px*${data.length} - 32px)]`}
           >
             {data.map((product) => (
-              <ProductCard product={product} key={product._id} />
+              <ProductCard
+                product={product}
+                dimension={"w-[18rem] h-[18rem]"}
+                key={product._id}
+              />
             ))}
             {data.map((product) => (
-              <ProductCard product={product} key={product._id} />
+              <ProductCard
+                product={product}
+                dimension={"w-[18rem] h-[18rem]"}
+                key={product._id}
+              />
             ))}
           </div>
         </div>

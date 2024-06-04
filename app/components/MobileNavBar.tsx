@@ -32,7 +32,7 @@ const MobileNavBar: React.FC<Props> = ({
         onClick={toggleSideMenu}
       />
       <div
-        className={`${open ? "w-96 pt-12" : "w-0"} lg:w-0 lg:hidden flex justify-center 
+        className={`${open ? "w-11/12 pt-12" : "w-0"} lg:w-0 lg:hidden flex justify-center 
                                        absolute duration-700 z-40 transition-all h-screen bg-white
                                        overflow-y-scroll overflow-hidden`}
       >
