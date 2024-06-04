@@ -33,7 +33,7 @@ const ProductCard = ({ product }: any) => {
   return (
     <div className="group relative">
       <div
-        className="relative w-full sm:w-[18rem] sm:h-[18rem] overflow-hidden 
+        className="relative w-[18rem] h-[18rem] overflow-hidden 
                  lg:h-80"
       >
         <Link href={`/product/${product.slug}`}>

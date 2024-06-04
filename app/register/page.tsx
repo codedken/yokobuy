@@ -18,7 +18,7 @@ const Register = () => {
             </h5>
             <p className="text-lg">
               By creating an account you will be able to shop faster, be up to
-              date on an orders status, and keep track of the orders you have
+              date on an order\'s status, and keep track of the orders you have
               previously made.
             </p>
             <Link href="/login">
