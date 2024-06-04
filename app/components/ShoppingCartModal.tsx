@@ -10,6 +10,7 @@ import {
 import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart";
 import QtyModBtn from "./QtyModBtn";
+import { X } from "lucide-react";
 
 export default function ShoppingCartModal() {
   const {
@@ -51,7 +52,7 @@ export default function ShoppingCartModal() {
                 <>
                   {Object.values(cartDetails ?? {}).map((entry) => (
                     <li key={entry.id} className="flex py-6">
-                      <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                      <div className="h-24 w-20 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <Image
                           src={entry.image as string}
                           alt="Product image"
@@ -83,13 +84,15 @@ export default function ShoppingCartModal() {
                               onClick={() => removeItem(entry.id)}
                               className="font-medium text-primary hover:text-red-500"
                             >
-                              Remove
+                              <X className="text-red-500" />
                             </button>
                           </div>
                         </div>
 
-                        <div className="mt-2 flex flex-1 items-end justify-between text-sm">
-                          <p className="text-gray-500">QTY: {entry.quantity}</p>
+                        <div className="mt-1 flex flex-1 items-end justify-between text-sm">
+                          <p className="text-gray-500 text-sm">
+                            QTY: {entry.quantity}
+                          </p>
                           <p className="text-gray-500">
                             Total: ${entry.quantity * entry.price}
                           </p>
