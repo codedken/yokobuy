@@ -11,8 +11,8 @@ import { SiX } from "react-icons/si";
 const Footer = () => {
   return (
     <>
-      <footer className="flex pt-16 px-4 sm:px-16 flex-col items-center border-t border-gray-300">
-        <h2 className="text-xl text-center text-black">
+      <footer className="flex pt-8 md:pt-16 px-4 sm:px-16 flex-col items-center border-t border-gray-300">
+        <h2 className="text-xl md:text-2xl text-center text-black">
           Sign up for the newsletter and discover the latest arrivals and
           promotions.
         </h2>
@@ -34,7 +34,7 @@ const Footer = () => {
           </div>
           <div className="h-[1px] bg-gray-300 lg:flex-grow" />
         </div>
-        <div className="grid md:grid-cols-2  gap-8 lg:grid-cols-4 w-full mt-20">
+        <div className="grid md:grid-cols-2  gap-8 lg:grid-cols-4 w-full mt-10 md:mt-20">
           <div>
             <h4 className="text-sm lg:mb-8 mb-4 text-black font-bold tracking-wider">
               MY ACCOUNT

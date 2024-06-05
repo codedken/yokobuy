@@ -15,7 +15,7 @@ const QtyModBtn = ({
       <Button
         variant={"outline"}
         onClick={decrementQty}
-        className="text-gray-700 rounded-none w-12 h-10"
+        className="text-gray-700 p-3 w-10 h-8 rounded-none"
       >
         <Minus />
       </Button>
@@ -25,7 +25,7 @@ const QtyModBtn = ({
       <Button
         variant={"outline"}
         onClick={incrementQty}
-        className="text-gray-700 rounded-none w-12 h-10"
+        className="text-gray-700 p-3 w-10 h-8 rounded-none"
       >
         <Plus />
       </Button>

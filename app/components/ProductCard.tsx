@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Minus, Plus, ShoppingBag, ShoppingCart } from "lucide-react";
+import { Minus, Plus, ShoppingBag } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -55,12 +55,12 @@ const ProductCard = ({
         </Link>
         <div
           className="w-full flex items-center justify-between gap-2
-        h-12 bg-black -bottom-12 absolute
+        md:h-12 h-10 -bottom-12 bg-black absolute
         group-hover:bottom-0 transition-all duration-500"
         >
           <Button
             onClick={decrementQty}
-            className="border-r border-y-0 border-l-0 border-white rounded-none 
+            className="border-r p-1 md:p-3 border-y-0 border-l-0 border-white rounded-none 
             bg-transparent hover:bg-primary h-full"
             variant="outline"
           >
@@ -73,10 +73,12 @@ const ProductCard = ({
               addItem(productModel, { count: qty });
               toast.success(`${qty} ${product.name} added to the cart`);
             }}
-            className="flex gap-3 justify-center items-center rounded-none
+            className="flex p-0 gap-1 md:gap-3 justify-center items-center rounded-none
              group-hover:bg-black bg-black hover:underline"
           >
-            <span className="text-white font-bold uppercase">Add to Bag</span>
+            <span className="text-white text-xs md:text-base font-bold uppercase">
+              Add to Bag
+            </span>
             <div className="relative">
               <ShoppingBag className="text-white" />
               <span
@@ -90,7 +92,7 @@ const ProductCard = ({
           </Button>
           <Button
             onClick={incrementQty}
-            className="rounded-none border-white border-l border-y-0 border-r-0
+            className="rounded-none p-1 md:p-3 border-white border-l border-y-0 border-r-0
             bg-transparent hover:bg-primary h-full"
             variant="outline"
           >

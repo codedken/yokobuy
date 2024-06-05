@@ -68,7 +68,7 @@ export default function ShoppingCartModal() {
                             <p className="ml-4">${entry.price}</p>
                           </div>
                         </div>
-                        <div className="flex justify-between">
+                        <div className="flex gap-1 justify-between">
                           <QtyModBtn
                             qty={entry.quantity}
                             incrementQty={() => addItem(entry, { count: 1 })}

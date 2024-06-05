@@ -37,10 +37,10 @@ export default async function Newest() {
 
   return (
     <div className="bg-white">
-      <div className="mx-auto px-6 py-16 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto px-4 py-16 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-bold tracking-tight text-gray-900">
-            Our Newest page
+            Latest Products
           </h2>
           <Link
             href="/all"
@@ -60,14 +60,14 @@ export default async function Newest() {
             {data.map((product) => (
               <ProductCard
                 product={product}
-                dimension={"w-[12rem] h-[12rem] md:w-[18rem] md:h-[18rem]"}
+                dimension={"w-48 h-48 md:w-72 md:h-72"}
                 key={product._id}
               />
             ))}
             {data.map((product) => (
               <ProductCard
                 product={product}
-                dimension={"w-[12rem] h-[12rem] md:w-[18rem] md:h-[18rem]"}
+                dimension={"w-48 h-48 md:w-72 md:h-72"}
                 key={product._id}
               />
             ))}
