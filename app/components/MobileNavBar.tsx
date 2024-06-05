@@ -32,7 +32,7 @@ const MobileNavBar: React.FC<Props> = ({
         onClick={toggleSideMenu}
       />
       <div
-        className={`${open ? "w-9/12" : "w-0"} lg:w-0 lg:hidden 
+        className={`${open ? "w-10/12" : "w-0"} lg:w-0 lg:hidden 
                 bg-white absolute flex flex-col h-screen 
                 duration-500 z-40 transition-all`}
       >
@@ -76,7 +76,7 @@ const MobileNavBar: React.FC<Props> = ({
               {searchOpen ? <X /> : <Search className="h-6 w-6" />}
             </Button>
           </div>
-          <div className="w-full relative mb-16 px-4 top-8">
+          <div className="w-full relative px-4 top-8">
             <ul>
               {links.map((li: any, i: number) => {
                 const is_expand_and_active =
@@ -86,7 +86,8 @@ const MobileNavBar: React.FC<Props> = ({
                 return (
                   <div key={i} className="flex flex-col">
                     <div
-                      className={`group flex justify-between cursor-pointer hover:text-primary items-center border-b h-12`}
+                      className={`group flex justify-between cursor-pointer 
+                      hover:text-primary items-center border-b h-12`}
                     >
                       <Link href={`${li.href}`} onClick={toggleSideMenu}>
                         <li
@@ -101,7 +102,7 @@ const MobileNavBar: React.FC<Props> = ({
                         <Button
                           variant={"outline"}
                           onClick={() => expandMenu(i)}
-                          className={`border-none ${open ? "flex" : "hidden"} rounded-none hover:bg-transparent group-hover:text-primary
+                          className={`border-none ${open ? "flex p-0 mr-2" : "hidden"} rounded-none hover:bg-transparent group-hover:text-primary
                         ${is_expand_and_active ? "text-primary" : "text-gray-700"}`}
                         >
                           {is_expand_and_active ? (
@@ -193,7 +194,7 @@ const MobileNavBar: React.FC<Props> = ({
         </div>
         <div
           onClick={toggleSideMenu}
-          className={`${open ? "flex" : "hidden"} w-full h-12 divide-x-2`}
+          className={`${open ? "flex" : "hidden"} w-full h-12 divide-x-[0.5px]`}
         >
           <Link href="/login" className="w-1/2">
             <Button
