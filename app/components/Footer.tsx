@@ -12,7 +12,7 @@ const Footer = () => {
   return (
     <>
       <footer className="flex pt-16 px-4 sm:px-16 flex-col items-center border-t border-gray-300">
-        <h2 className="text-xl text-black">
+        <h2 className="text-xl text-center text-black">
           Sign up for the newsletter and discover the latest arrivals and
           promotions.
         </h2>

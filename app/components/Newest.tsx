@@ -31,38 +31,43 @@ async function getData() {
 export default async function Newest() {
   const data: simplifiedProduct[] = await getData();
 
-  const style = { "--length": `${data.length}` } as React.CSSProperties;
+  const style = {
+    "--length": `${data.length}`,
+  } as React.CSSProperties;
 
   return (
     <div className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <div className="mx-auto px-6 py-16 sm:py-24 lg:max-w-7xl lg:px-8">
         <div className="flex justify-between items-center">
-          <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-xl font-bold tracking-tight text-gray-900">
             Our Newest page
           </h2>
-          <Link href="/all" className="text-primary flex items-center gap-x-1">
+          <Link
+            href="/all"
+            className="text-primary text-sm md:text-base flex items-center gap-x-1"
+          >
             See All
             <span>
-              <ArrowRight />
+              <ArrowRight size={16} />
             </span>
           </Link>
         </div>
         <div className="mt-6 grid relative m-auto overflow-hidden">
           <div
             style={style}
-            className={`slide-track flex gap-2 lg:w-[calc(336px*${data.length} - 32px)]`}
+            className={`slide-track flex gap-2 lg:w-[calc(336px*${data.length})]`}
           >
             {data.map((product) => (
               <ProductCard
                 product={product}
-                dimension={"w-[18rem] h-[18rem]"}
+                dimension={"w-[12rem] h-[12rem] md:w-[18rem] md:h-[18rem]"}
                 key={product._id}
               />
             ))}
             {data.map((product) => (
               <ProductCard
                 product={product}
-                dimension={"w-[18rem] h-[18rem]"}
+                dimension={"w-[12rem] h-[12rem] md:w-[18rem] md:h-[18rem]"}
                 key={product._id}
               />
             ))}

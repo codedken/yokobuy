@@ -33,7 +33,7 @@ const MobileNavBar: React.FC<Props> = ({
       />
       <div
         className={`${open ? "w-9/12 pt-12" : "w-0"} lg:w-0 lg:hidden flex justify-center 
-                    absolute duration-700 z-40 transition-all h-screen bg-white
+                    absolute duration-500 z-40 transition-all h-screen bg-white
                     overflow-y-scroll overflow-hidden`}
       >
         <div
@@ -97,7 +97,7 @@ const MobileNavBar: React.FC<Props> = ({
                     {!is_sublist_empty ? (
                       <Button
                         variant={"outline"}
-                        className={`border-none rounded-none hover:bg-transparent group-hover:text-primary
+                        className={`border-none ${open ? "flex" : "hidden"} rounded-none hover:bg-transparent group-hover:text-primary
                         ${is_expand_and_active ? "text-primary" : "text-gray-700"}`}
                       >
                         {is_expand_and_active ? (

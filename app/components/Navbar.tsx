@@ -107,7 +107,7 @@ export default function Navbar() {
         expandMenu={expandMenu}
         expandMenu2={expandMenu2}
       />
-      <div className="flex items-center justify-between mx-auto max-w-2xl px-4 sm:px-6 lg:max-w-7xl">
+      <div className="flex items-center justify-between lg:mx-auto px-4 sm:px-6 lg:max-w-7xl">
         <Button
           variant={"outline"}
           className="flex lg:hidden rounded-none border-black border-y-0 h-14 w-14 sm:h-20 sm:w-20"
