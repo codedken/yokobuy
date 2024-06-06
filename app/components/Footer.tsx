@@ -142,17 +142,16 @@ const Footer = () => {
             </h4>
             <ul className="text-black text-sm flex flex-col gap-1.5">
               <p className="text-gray-800 leading-7 text-base font-light">
-                Corporate Office (Appointment only 5, Mobolaji Bank Anthony way,
-                Maryland, Lagos, Nigeria.
+                Trade Fair Complex, Lagos State, Nigeria.
               </p>
               <li>
                 <Link href="/" className="hover:underline">
-                  +2348068895803(call & whatsapp)
+                  +2348066660633 (call & whatsapp)
                 </Link>
               </li>
               <li>
                 <Link href="/" className="hover:underline">
-                  yokobuy@gmail.com
+                  yokobuy.com@gmail.com
                 </Link>
               </li>
               <li>

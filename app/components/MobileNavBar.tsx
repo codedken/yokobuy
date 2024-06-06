@@ -41,27 +41,9 @@ const MobileNavBar: React.FC<Props> = ({
                     overflow-y-scroll overflow-hidden`}
         >
           <div
-            className={`flex w-full lg:hidden 
-            items-center justify-between duration-700 transition-all`}
+            className={`flex lg:hidden items-center 
+            ml-4 mr-2 justify-between duration-700 transition-all`}
           >
-            <Button
-              variant={"outline"}
-              className={`${searchOpen ? "opacity-0 hidden" : "opacity-100"} 
-                        border-none h-10 rounded-none w-14 hover:bg-transparent 
-                        transition-all hover:text-primary text-gray-500`}
-              onClick={toggleSideMenu}
-            >
-              <X
-                className={`${open ? "rotate-0" : "rotate-180"} transition-all`}
-              />
-            </Button>
-            <input
-              type="text"
-              className={`${searchOpen ? "w-10/12 border pl-6 " : "w-0 hidden"} bg-gray-200 
-                               ml-3 h-10 outline-none transition-all
-                              placeholder:text-gray-500 placeholder:text-sm placeholder:font-light`}
-              placeholder="Search Item..."
-            />
             <Link href="/" className={`${searchOpen ? "hidden" : "flex"}`}>
               <h1 className="text-2xl md:text-3xl font-bold">
                 Yoko<span className="text-primary">Buy</span>
@@ -69,11 +51,12 @@ const MobileNavBar: React.FC<Props> = ({
             </Link>
             <Button
               variant={"outline"}
-              className="border-none hover:bg-transparent hover:text-primary
-                                rounded-none text-gray-500"
-              onClick={toggleSearch}
+              className={`${searchOpen ? "opacity-0 hidden" : "opacity-100"} 
+                        border-none h-10 rounded-none w-14 hover:bg-transparent 
+                        transition-all text-gray-500`}
+              onClick={toggleSideMenu}
             >
-              {searchOpen ? <X /> : <Search className="h-6 w-6" />}
+              <X />
             </Button>
           </div>
           <div className="w-full relative px-4 top-8">
@@ -208,7 +191,7 @@ const MobileNavBar: React.FC<Props> = ({
           </Link>
           <Link href="/register" className="w-1/2">
             <Button
-              className="bg-red-600 hover:bg-red-700
+              className="bg-orange-600 hover:bg-orange-700
            rounded-none w-full h-full"
               variant="ghost"
             >

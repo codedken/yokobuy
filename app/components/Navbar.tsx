@@ -95,7 +95,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="mb-8 border-b border-black sticky top-0 z-50 bg-white">
+    <header className="mb-4 border-b border-black sticky top-0 z-50 bg-white">
       <MobileNavBar
         toggleSearch={toggleSearch}
         toggleSideMenu={toggleSideMenu}
