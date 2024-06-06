@@ -194,7 +194,7 @@ const MobileNavBar: React.FC<Props> = ({
         </div>
         <div
           onClick={toggleSideMenu}
-          className={`${open ? "flex" : "hidden"} w-full h-12 mb-12 divide-x-[0.5px]`}
+          className={`${open ? "flex" : "hidden"} w-full h-12 mb-16 divide-x-[0.5px]`}
         >
           <Link href="/login" className="w-1/2">
             <Button
