@@ -209,7 +209,7 @@ const Footer = () => {
         </div>
       </footer>
       <div className="mt-10 bg-black/80 w-full flex justify-center py-4">
-        <span className="text-sm text-white">
+        <span className="text-xs md:text-sm text-white">
           Copyrights © YokoBuy.com | May, 2024
         </span>
       </div>
@@ -218,5 +218,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-// bg-primary from-pink-700 to-orange-700 bg-gradient-to-br

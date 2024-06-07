@@ -185,10 +185,12 @@ export default function Navbar() {
             </div>
           ))}
         </nav>
-        <div className="flex cursor-pointer relative divide-x border-r sm:border-l">
+        <div
+          onClick={() => handleCartClick()}
+          className="flex cursor-pointer relative divide-x border-r sm:border-l"
+        >
           <Button
             variant={"outline"}
-            onClick={() => handleCartClick()}
             className="flex flex-col gap-y-1.5 h-14 w-14 sm:h-20 sm:w-20 border-black 
                         border-y-0 rounded-none"
           >

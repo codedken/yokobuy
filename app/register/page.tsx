@@ -5,7 +5,7 @@ import React from "react";
 
 const Register = () => {
   return (
-    <div className="w-full px-4 sm:px-10 md:px-16 lg:px-44 mb-32 mt-12 gap-6 flex flex-col justify-between">
+    <div className="w-full px-4 sm:px-6 lg:px-30 xl:px-44 mb-32 mt-12 gap-6 flex flex-col justify-between">
       <h2 className="text-black md:text-2xl text-xl font-semibold">REGISTER</h2>
       <div className="flex w-full md:gap-16">
         <div className="w-1/2 md:flex hidden">
@@ -86,11 +86,14 @@ const Register = () => {
                 />
                 <Lock className="absolute top-0 bottom-0 my-auto left-4 w-6 h-6 text-gray-600" />
               </div>
-              <div className="flex justify-between">
-                <Link href="/" className="hover:underline hover:text-primary">
-                  <span>Forgot Password?</span>
+              <div className="flex gap-4 justify-between">
+                <Link
+                  href="/"
+                  className="text-sm sm:text-base hover:underline hover:text-primary"
+                >
+                  <span className="whitespace-nowrap">Forgot Password?</span>
                 </Link>
-                <span>
+                <span className="flex gap-1 flex-wrap text-sm sm:text-base">
                   Do you have an account?
                   <Link
                     href="/login"
@@ -100,7 +103,7 @@ const Register = () => {
                   </Link>
                 </span>
               </div>
-              <div className="flex gap-4">
+              <div className="flex gap-4 text-sm sm:text-base">
                 <p>Subscribe to our newsletter</p>
                 <div className="">
                   <input type="radio" name="sub" id="yes" />

@@ -191,7 +191,7 @@ const MobileNavBar: React.FC<Props> = ({
           </Link>
           <Link href="/register" className="w-1/2">
             <Button
-              className="bg-black hover:bg-black/90
+              className="bg-[#C44593] hover:bg-[#AB367E]
            rounded-none w-full h-full"
               variant="ghost"
             >

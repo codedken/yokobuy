@@ -62,7 +62,7 @@ const BeforeNavBar = () => {
           <Link href="/register">
             <Button
               variant={"outline"}
-              className="bg-blue-600 hover:bg-blue-700 rounded-none h-11 border-none"
+              className="bg-[#C44593] hover:bg-[#AB367E] rounded-none h-11 border-none"
             >
               <UserPlus2 className="mr-2 text-white" />
               <span className="text-white text-xs tracking-wider">
