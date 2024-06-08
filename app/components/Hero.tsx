@@ -24,38 +24,58 @@ const Hero = async () => {
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
         <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48">
           <div className="mb-8 rounded-l-full w-full h-12 relative lg:hidden block overflow-hidden">
-            <div className="absolute search-slider left-0 pr-20 w-full overflow-hidden">
+            <div className="absolute search-slider left-0 pr-20 w-full">
               <ul className="pl-6">
-                <li className="h-12 whitespace-nowrap flex items-center text-gray-400">
-                  <p>Search Items...</p>
+                <li
+                  className="h-12 line-clamp-1 whitespace-nowrap 
+                flex items-center text-gray-400 text-sm tracking-wide"
+                >
+                  Search Items...
                 </li>
-                <li className="h-12 whitespace-nowrap flex items-center text-gray-400">
-                  <p>Electronics e.g TV, AC, Refrigerator</p>
+                <li
+                  className="h-12 line-clamp-1 whitespace-nowrap 
+                flex items-center text-gray-400 text-sm tracking-wide"
+                >
+                  Electronics - tv, refrigerator, musicals
                 </li>
-                <li className="h-12 whitespace-nowrap flex items-center text-gray-400">
-                  <p className="line-clamp-1">
-                    Gadgets e.g Phones, Computers, game console
-                  </p>
+                <li
+                  className="h-12 line-clamp-1 whitespace-nowrap 
+                flex items-center text-gray-400 text-sm tracking-wide"
+                >
+                  Gadgets - phones, computers, game console
                 </li>
-                <li className="h-12 whitespace-nowrap flex items-center text-gray-400">
-                  <p>Automobiles (Cars and their Parts)</p>
+                <li
+                  className="h-12 line-clamp-1 whitespace-nowrap 
+                flex items-center text-gray-400 text-sm tracking-wide"
+                >
+                  Automobiles - cars and their parts
                 </li>
-                <li className="h-12 whitespace-nowrap flex items-center text-gray-400">
-                  <p>Fashion</p>
+                <li
+                  className="h-12 line-clamp-1 whitespace-nowrap 
+                flex items-center text-gray-400 text-sm tracking-wide"
+                >
+                  Fashion - suit, native, shoes, bags
                 </li>
-                <li className="h-12 whitespace-nowrap flex items-center text-gray-400">
-                  <p>Furnitures</p>
+                <li
+                  className="h-12 line-clamp-1 whitespace-nowrap 
+                flex items-center text-gray-400 text-sm tracking-wide"
+                >
+                  Furnitures - ergonomic chair, sofa & couch
                 </li>
-                <li className="h-12 whitespace-nowrap flex items-center text-gray-400">
-                  <p>Search Items...</p>
+                <li
+                  className="h-12 line-clamp-1 whitespace-nowrap 
+                flex items-center text-gray-400 text-sm tracking-wide"
+                >
+                  Search Items...
                 </li>
               </ul>
             </div>
             <input
               type="text"
-              className="w-full flex h-full pl-6 bg-transparent 
+              className="search-input w-full flex h-full pl-6 pr-20 bg-transparent 
                         border relative border-gray-400 rounded-full
-                        outline-none focus:border-black focus:bg-white"
+                        outline-none focus:border-black focus:bg-white
+                        "
               placeholder=""
             />
             <div

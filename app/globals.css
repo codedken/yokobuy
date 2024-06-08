@@ -83,40 +83,40 @@
     0%{
       top: 0;
     }
-    15%{
+    6%{
       top: 0;
     }
-    16%{
+    8%{
       top: calc(-3rem*1);
     }
-    30%{
+    23%{
       top: calc(-3rem*1);
     }
-    31%{
+    25%{
       top: calc(-3rem*2);
     }
-    45%{
+    40%{
       top: calc(-3rem*2);
     }
-    46%{
+    42%{
       top: calc(-3rem*3);
     }
-    60%{
+    57%{
       top: calc(-3rem*3);
     }
-    61%{
+    59%{
       top: calc(-3rem*4);
     }
-    75%{
+    74%{
       top: calc(-3rem*4);
     }
     76%{
       top: calc(-3rem*5);
     }
-    90%{
+    91%{
       top: calc(-3rem*5);
     }
-    91%{
+    93%{
       top: calc(-3rem*6);
     }
     100%{
