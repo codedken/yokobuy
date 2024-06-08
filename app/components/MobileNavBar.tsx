@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Lock, Minus, Plus, Search, UserPlus2, X } from "lucide-react";
+import { Lock, Minus, Plus, UserPlus2, X } from "lucide-react";
 import Link from "next/link";
 
 interface Props {
@@ -14,7 +14,6 @@ interface Props {
   expandMenu2: any;
 }
 const MobileNavBar: React.FC<Props> = ({
-  toggleSearch,
   toggleSideMenu,
   open,
   searchOpen,

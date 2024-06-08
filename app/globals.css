@@ -75,6 +75,55 @@
     }
   }
 
+  .search-slider{
+    animation: slide 30s linear infinite;
+  }
+  
+  @keyframes slide {
+    0%{
+      top: 0;
+    }
+    15%{
+      top: 0;
+    }
+    16%{
+      top: calc(-3rem*1);
+    }
+    30%{
+      top: calc(-3rem*1);
+    }
+    31%{
+      top: calc(-3rem*2);
+    }
+    45%{
+      top: calc(-3rem*2);
+    }
+    46%{
+      top: calc(-3rem*3);
+    }
+    60%{
+      top: calc(-3rem*3);
+    }
+    61%{
+      top: calc(-3rem*4);
+    }
+    75%{
+      top: calc(-3rem*4);
+    }
+    76%{
+      top: calc(-3rem*5);
+    }
+    90%{
+      top: calc(-3rem*5);
+    }
+    91%{
+      top: calc(-3rem*6);
+    }
+    100%{
+      top: calc(-3rem*6);
+    }
+  }
+
   @media (max-width: 768px){
     @keyframes scroll {
       0%{

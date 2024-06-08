@@ -75,7 +75,7 @@ const Login = () => {
                 className="group w-1/4 bg-black hover:bg-black text-white font-bold border-none rounded-none"
                 variant="outline"
               >
-                <span className="text-white text-sm group-hover:underline">
+                <span className="text-white text-xs sm:text-sm group-hover:underline">
                   LOGIN
                 </span>
               </Button>
