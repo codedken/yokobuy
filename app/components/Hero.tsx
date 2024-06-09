@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { client, urlFor } from "../lib/sanity";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import SearchInput from "./SearchInput";
 
 const getData = async () => {
   const query = "*[_type == 'heroImage'][0]";
@@ -19,73 +19,12 @@ const getData = async () => {
 
 const Hero = async () => {
   const data = await getData();
+
   return (
     <section className="mx-auto px-4 sm:px-6 sm:pb-6 lg:max-w-7xl lg:px-8">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
         <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48">
-          <div className="mb-8 rounded-l-full w-full h-12 relative lg:hidden block overflow-hidden">
-            <div className="absolute search-slider left-0 pr-20 w-full">
-              <ul className="pl-6">
-                <li
-                  className="h-12 line-clamp-1 whitespace-nowrap 
-                flex items-center text-gray-400 text-sm tracking-wide"
-                >
-                  Search Items...
-                </li>
-                <li
-                  className="h-12 line-clamp-1 whitespace-nowrap 
-                flex items-center text-gray-400 text-sm tracking-wide"
-                >
-                  Electronics - tv, refrigerator, musicals
-                </li>
-                <li
-                  className="h-12 line-clamp-1 whitespace-nowrap 
-                flex items-center text-gray-400 text-sm tracking-wide"
-                >
-                  Gadgets - phones, computers, game console
-                </li>
-                <li
-                  className="h-12 line-clamp-1 whitespace-nowrap 
-                flex items-center text-gray-400 text-sm tracking-wide"
-                >
-                  Automobiles - cars and their parts
-                </li>
-                <li
-                  className="h-12 line-clamp-1 whitespace-nowrap 
-                flex items-center text-gray-400 text-sm tracking-wide"
-                >
-                  Fashion - suit, native, shoes, bags
-                </li>
-                <li
-                  className="h-12 line-clamp-1 whitespace-nowrap 
-                flex items-center text-gray-400 text-sm tracking-wide"
-                >
-                  Furnitures - ergonomic chair, sofa & couch
-                </li>
-                <li
-                  className="h-12 line-clamp-1 whitespace-nowrap 
-                flex items-center text-gray-400 text-sm tracking-wide"
-                >
-                  Search Items...
-                </li>
-              </ul>
-            </div>
-            <input
-              type="text"
-              className="search-input w-full flex h-full pl-6 pr-20 bg-transparent 
-                        border relative border-gray-400 rounded-full
-                        outline-none focus:border-black focus:bg-white
-                        "
-              placeholder=""
-            />
-            <div
-              className="flex justify-center absolute top-0 
-              bottom-0 my-auto right-1 h-5/6 w-16 rounded-full 
-            bg-black items-center cursor-pointer"
-            >
-              <Search className="text-white" />
-            </div>
-          </div>
+          <SearchInput />
           <h1 className="mb-4 text-2xl font-bold text-black sm:text-3xl md:mb-8 md:text-5xl">
             Shop For All You Need In One Place!
           </h1>

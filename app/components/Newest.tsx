@@ -53,10 +53,7 @@ export default async function Newest() {
           </Link>
         </div>
         <div className="mt-6 grid relative m-auto overflow-hidden">
-          <div
-            style={style}
-            className={`slide-track flex gap-2 lg:w-[calc(336px*${data.length})]`}
-          >
+          <div style={style} className={`slide-track flex gap-2`}>
             {data.map((product) => (
               <ProductCard
                 product={product}
