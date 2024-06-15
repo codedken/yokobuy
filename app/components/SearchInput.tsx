@@ -15,43 +15,43 @@ const SearchInput = () => {
         <ul className="pl-6 w-full">
           <li
             className="h-12 w-full whitespace-nowrap 
-                flex items-center text-gray-400 text-sm line-clamp-1"
+                flex items-center text-gray-400 text-sm"
           >
             Search Items...
           </li>
           <li
             className="h-12 w-full whitespace-nowrap 
-                flex items-center text-gray-400 text-sm line-clamp-1"
+                flex items-center text-gray-400 text-sm"
           >
             Electronics - tv, refrigerator, musicals
           </li>
           <li
             className="h-12 w-full whitespace-nowrap 
-                flex items-center text-gray-400 text-sm line-clamp-1"
+                flex items-center text-gray-400 text-sm"
           >
-            Gadgets - phones, computers, game console
+            Gadgets - phones, computers, tabs
           </li>
           <li
             className="h-12 w-full whitespace-nowrap 
-                flex items-center text-gray-400 text-sm line-clamp-1"
+                flex items-center text-gray-400 text-sm"
           >
             Automobiles - cars and their parts
           </li>
           <li
             className="h-12 w-full whitespace-nowrap 
-                flex items-center text-gray-400 text-sm line-clamp-1"
+                flex items-center text-gray-400 text-sm"
           >
             Fashion - suit, native, shoes, bags
           </li>
           <li
             className="h-12 w-full whitespace-nowrap 
-                flex items-center text-gray-400 text-sm line-clamp-1"
+                flex items-center text-gray-400 text-sm"
           >
             Furnitures - ergonomic chair, sofa & couch
           </li>
           <li
             className="h-12 w-full whitespace-nowrap 
-                flex items-center text-gray-400 text-sm line-clamp-1"
+                flex items-center text-gray-400 text-sm"
           >
             Search Items...
           </li>

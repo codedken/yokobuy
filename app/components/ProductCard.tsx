@@ -71,6 +71,7 @@ const ProductCard = ({
             onClick={() => {
               setQty(1);
               addItem(productModel, { count: qty });
+              toast.dismiss();
               toast.success(`${qty} ${product.name} added to the cart`);
             }}
             className="flex p-0 gap-1 md:gap-3 justify-center items-center rounded-none

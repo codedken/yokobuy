@@ -11,6 +11,8 @@ import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart";
 import QtyModBtn from "./QtyModBtn";
 import { X } from "lucide-react";
+import toast from "react-hot-toast";
+import { signIn, useSession } from "next-auth/react";
 
 export default function ShoppingCartModal() {
   const {
@@ -23,6 +25,8 @@ export default function ShoppingCartModal() {
     totalPrice,
     redirectToCheckout,
   } = useShoppingCart();
+
+  const { data: session } = useSession();
 
   async function handleCheckoutClick(event: any) {
     event.preventDefault();
@@ -112,14 +116,28 @@ export default function ShoppingCartModal() {
             </p>
 
             <div className="mt-6">
-              <Button onClick={handleCheckoutClick} className="w-full">
+              <Button
+                onClick={
+                  cartCount === 0
+                    ? () => {
+                        toast.dismiss();
+                        toast.error("No items in the cart to Checkout", {
+                          position: "top-center",
+                        });
+                      }
+                    : (e) => {
+                        session?.user ? handleCheckoutClick(e) : signIn();
+                      }
+                }
+                className="w-full"
+              >
                 Checkout
               </Button>
             </div>
 
             <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
               <p>
-                OR{" "}
+                OR
                 <button
                   onClick={() => handleCartClick()}
                   className="font-medium text-primary hover:text-primary/80"

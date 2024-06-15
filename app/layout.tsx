@@ -15,6 +15,7 @@ import ShoppingCartModal from "./components/ShoppingCartModal";
 import BeforeNavBar from "./components/BeforeNavBar";
 import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
+import Provider from "./Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -36,14 +37,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
-        <CartProvider>
-          <BeforeNavBar />
-          <Navbar />
-          <ShoppingCartModal />
-          {children}
-          <Toaster position="top-center" />
-          <Footer />
-        </CartProvider>
+        <Provider>
+          <CartProvider>
+            <BeforeNavBar />
+            <Navbar />
+            <ShoppingCartModal />
+            {children}
+            <Toaster position="top-center" />
+            <Footer />
+          </CartProvider>
+        </Provider>
       </body>
     </html>
   );

@@ -1,6 +1,10 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
-import { Lock, Minus, Plus, UserPlus2, X } from "lucide-react";
+import { Lock, LogOut, Minus, Plus, UserPlus2, X } from "lucide-react";
 import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/react";
+import UserButton from "@/components/UserButton";
 
 interface Props {
   toggleSearch: any;
@@ -23,6 +27,7 @@ const MobileNavBar: React.FC<Props> = ({
   expandMenu,
   expandMenu2,
 }) => {
+  const { data: session } = useSession();
   return (
     <>
       <div
@@ -43,6 +48,7 @@ const MobileNavBar: React.FC<Props> = ({
             className={`flex lg:hidden items-center 
             ml-4 mr-2 justify-between duration-700 transition-all`}
           >
+            {session?.user && <UserButton user={session.user} />}
             <Link href="/" className={`${searchOpen ? "hidden" : "flex"}`}>
               <h1 className="text-2xl md:text-3xl font-bold">
                 Yoko<span className="text-primary">Buy</span>
@@ -178,28 +184,40 @@ const MobileNavBar: React.FC<Props> = ({
           onClick={toggleSideMenu}
           className={`${open ? "flex" : "hidden"} w-full h-12 mb-14 divide-x-[0.5px]`}
         >
-          <Link href="/login" className="w-1/2">
+          {session?.user ? (
             <Button
-              className="bg-primary hover:bg-violet-700 
-            rounded-none w-full h-full"
+              onClick={() => signOut({ callbackUrl: "/" })}
+              className="bg-red-500 hover:bg-red-700 
+      rounded-none w-full h-full"
               variant="ghost"
             >
-              <Lock className="mr-2 text-white" />
-              <span className="text-white text-xs tracking-wider">LOGIN</span>
+              <LogOut className="mr-2 text-white" />
+              <span className="text-white text-xs tracking-wider">LOGOUT</span>
             </Button>
-          </Link>
-          <Link href="/register" className="w-1/2">
-            <Button
-              className="bg-[#C44593] hover:bg-[#AB367E]
-           rounded-none w-full h-full"
-              variant="ghost"
-            >
-              <UserPlus2 className="mr-2 text-white" />
-              <span className="text-white text-xs tracking-wider">
-                REGISTER
-              </span>
-            </Button>
-          </Link>
+          ) : (
+            <>
+              <Button
+                onClick={() => signIn()}
+                className="bg-primary w-1/2 hover:bg-violet-700 
+            rounded-none h-full"
+                variant="ghost"
+              >
+                <Lock className="mr-2 text-white" />
+                <span className="text-white text-xs tracking-wider">LOGIN</span>
+              </Button>
+
+              <Button
+                className="bg-[#C44593] hover:bg-[#AB367E]
+           rounded-none w-1/2 h-full"
+                variant="ghost"
+              >
+                <UserPlus2 className="mr-2 text-white" />
+                <span className="text-white text-xs tracking-wider">
+                  REGISTER
+                </span>
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </>
