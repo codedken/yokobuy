@@ -16,7 +16,7 @@ export const ProviderMap = providers.map((provider) => {
 });
 
 export const config = {
-  trusthost: true,
+  trustHost: true,
   adapter: PrismaAdapter(prisma),
   providers: providers,
   pages: {
