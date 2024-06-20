@@ -14,6 +14,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import toast from "react-hot-toast";
+import AlertDialogMenu from "@/app/components/AlertDialogMenu";
 
 interface UserButtonProps {
   user: User;
@@ -25,7 +26,7 @@ export default function UserButton({ user }: UserButtonProps) {
       <DropdownMenuTrigger asChild>
         <Button
           size="icon"
-          className="flex-none border-2 w-11 h-11 border-primary/30 rounded-full"
+          className="flex-none border w-11 h-11 border-primary/30 rounded-full"
         >
           <Image
             src={user.image || "/avatar_placeholder.png"}
@@ -46,26 +47,19 @@ export default function UserButton({ user }: UserButtonProps) {
               <span>Settings</span>
             </Link>
           </DropdownMenuItem>
-          {/* {user.role === "admin" && (
-            <DropdownMenuItem asChild>
-              <Link href="/admin">
-                <Lock className="mr-2 h-4 w-4" />
-                Admin
-              </Link>
-            </DropdownMenuItem>
-          )} */}
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem asChild className="cursor-pointer">
-          <button
-            onClick={() => {
+          <AlertDialogMenu
+            action={() => {
               signOut({ callbackUrl: "/" });
               toast.success("You logged out successfully...");
             }}
-            className="flex w-full items-center"
           >
-            <LogOut className="mr-2 h-4 w-4" /> Sign Out
-          </button>
+            <button className="flex w-full text-sm py-1.5 rounded-sm hover:bg-gray-100 items-center">
+              <LogOut className="mx-2 h-4 w-4" /> Sign Out
+            </button>
+          </AlertDialogMenu>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
