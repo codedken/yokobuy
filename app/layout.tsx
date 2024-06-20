@@ -13,9 +13,9 @@ import Navbar from "./components/Navbar";
 import CartProvider from "./components/Providers";
 import ShoppingCartModal from "./components/ShoppingCartModal";
 import BeforeNavBar from "./components/BeforeNavBar";
-import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 import Provider from "./Provider";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -43,7 +43,7 @@ export default function RootLayout({
             <Navbar />
             <ShoppingCartModal />
             {children}
-            <Toaster position="top-center" />
+            <Toaster />
             <Footer />
           </CartProvider>
         </body>
