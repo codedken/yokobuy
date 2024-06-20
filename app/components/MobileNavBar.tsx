@@ -15,6 +15,7 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 import { truncate } from "fs";
+import AlertDialogMenu from "./AlertDialogMenu";
 
 interface Props {
   toggleSearch: any;
@@ -49,7 +50,7 @@ const MobileNavBar: React.FC<Props> = ({
             <SheetTitle>
               <div
                 className={`flex lg:hidden items-center 
-             justify-between duration-700 transition-all`}
+             gap-4 duration-700 transition-all`}
               >
                 {session?.user && <UserButton user={session.user} />}
                 <Link href="/" className={`${searchOpen ? "hidden" : "flex"}`}>
@@ -57,15 +58,6 @@ const MobileNavBar: React.FC<Props> = ({
                     Yoko<span className="text-primary">Buy</span>
                   </h1>
                 </Link>
-                <Button
-                  variant={"outline"}
-                  className={`${searchOpen ? "opacity-0 hidden" : "opacity-100"} 
-                        border-none h-10 rounded-none w-14 hover:bg-transparent 
-                        transition-all text-gray-500`}
-                  onClick={toggleSideMenu}
-                >
-                  <X />
-                </Button>
               </div>
             </SheetTitle>
           </SheetHeader>
@@ -192,31 +184,37 @@ const MobileNavBar: React.FC<Props> = ({
             <div className=" border-gray-200 py-6">
               <SheetFooter>
                 <div
-                  onClick={toggleSideMenu}
                   className={`${open ? "flex" : "hidden"} w-full overflow-hidden 
-          h-12 divide-x-[0.5px]`}
+          h-12 gap-2`}
                 >
                   {session?.user ? (
-                    <Button
-                      onClick={() => {
+                    <AlertDialogMenu
+                      action={() => {
                         signOut({ callbackUrl: "/" });
                         toast.success("You logged out successfully...");
                       }}
-                      className="bg-red-500 hover:bg-red-700 
-      rounded-none w-full h-full"
-                      variant="ghost"
                     >
-                      <LogOut className="mr-2 text-white" />
-                      <span className="text-white text-xs tracking-wider">
-                        LOGOUT
-                      </span>
-                    </Button>
+                      <Button
+                        onClick={() => {}}
+                        className="bg-red-600 hover:bg-red-500 
+                     w-full h-full"
+                        variant="ghost"
+                      >
+                        <LogOut className="mr-2 text-white" />
+                        <span className="text-white text-xs tracking-wider">
+                          LOGOUT
+                        </span>
+                      </Button>
+                    </AlertDialogMenu>
                   ) : (
                     <>
                       <Button
-                        onClick={() => signIn()}
-                        className="bg-primary w-1/2 hover:bg-violet-700 
-            rounded-none h-full"
+                        onClick={() => {
+                          toggleSideMenu();
+                          signIn();
+                        }}
+                        className="bg-[#192a66] w-1/2 hover:bg-[#304aa8] 
+                        h-full"
                         variant="ghost"
                       >
                         <Lock className="mr-2 text-white" />
@@ -226,8 +224,11 @@ const MobileNavBar: React.FC<Props> = ({
                       </Button>
                       <Link href="/register" className="w-1/2 h-full">
                         <Button
-                          className="bg-[#C44593] hover:bg-[#AB367E]
-           rounded-none w-full h-full"
+                          onClick={() => {
+                            toggleSideMenu();
+                          }}
+                          className="bg-[#761f54] hover:bg-[#AB367E]
+                         w-full h-full"
                           variant="ghost"
                         >
                           <UserPlus2 className="mr-2 text-white" />
