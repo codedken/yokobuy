@@ -41,7 +41,10 @@ const MobileNavBar: React.FC<Props> = ({
   return (
     <>
       <Sheet open={open} onOpenChange={toggleSideMenu}>
-        <SheetContent side="left" className="lg:hidden sm:max-w-lg w-[85vw]">
+        <SheetContent
+          side="left"
+          className="px-3 py-6 lg:hidden sm:max-w-lg w-[85vw]"
+        >
           <SheetHeader>
             <SheetTitle>
               <div
