@@ -24,7 +24,13 @@ const Hero = async () => {
     <section className="mx-auto px-4 sm:px-6 sm:pb-6 lg:max-w-7xl lg:px-8">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">
         <div className="mb-6 flex w-full flex-col justify-center sm:mb-12 lg:mb-0 lg:w-1/3 lg:pb-24 lg:pt-48">
-          <SearchInput />
+          <SearchInput
+            style="mb-8 rounded-l-full w-full h-12 relative 
+            lg:hidden block overflow-hidden"
+            inputStyle="search-input w-full flex h-full pl-6 pr-20
+            border relative border-gray-400 rounded-full
+            outline-none focus:border-black"
+          />
           <h1 className="mb-4 text-2xl font-bold text-black sm:text-3xl md:mb-8 md:text-5xl">
             Shop For All You Need In One Place!
           </h1>

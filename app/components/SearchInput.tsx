@@ -3,11 +3,17 @@
 import { Search } from "lucide-react";
 import React, { useState } from "react";
 
-const SearchInput = () => {
+const SearchInput = ({
+  style,
+  inputStyle,
+}: {
+  style: string;
+  inputStyle: string;
+}) => {
   const [searchValue, setSearchValue] = useState("");
 
   return (
-    <div className="mb-8 rounded-l-full w-full h-12 relative lg:hidden block overflow-hidden">
+    <div className={style}>
       <div
         className={`absolute search-slider 
             ${searchValue !== "" ? "paused" : ""} left-0 pr-20 w-full`}
@@ -60,11 +66,9 @@ const SearchInput = () => {
       <input
         type="text"
         onChange={(e) => setSearchValue(e.target.value)}
-        className={`search-input w-full flex h-full pl-6 pr-20 
-            ${searchValue !== "" ? "bg-white " : "bg-transparent "} 
-                        border relative border-gray-400 rounded-full
-                        outline-none focus:border-black
-                        `}
+        className={`${searchValue !== "" ? "bg-white " : "bg-transparent "} 
+        ${inputStyle}
+        `}
         placeholder=""
       />
       <div

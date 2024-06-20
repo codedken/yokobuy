@@ -8,6 +8,7 @@ import ItemQty from "./ItemQty";
 import { useState } from "react";
 import { categories_list } from "../models/categories_list";
 import MobileNavBar from "./MobileNavBar";
+import Image from "next/image";
 
 const links = categories_list;
 
@@ -115,11 +116,21 @@ export default function Navbar() {
         >
           <Menu />
         </Button>
-        <Link href="/">
-          <h1 className="text-2xl md:text-3xl font-bold">
-            Yoko<span className="text-primary">Buy</span>
-          </h1>
-        </Link>
+        <div className="flex gap-3 items-center">
+          <Image
+            src="/yokobuy_logo.png"
+            alt="yokobuy logo"
+            width={100}
+            height={100}
+            className="sm:w-10 sm:h-10 h-8 w-8"
+          />
+          <Link href="/">
+            <h1 className="text-2xl md:text-3xl font-bold">
+              Yoko<span className="text-primary">Buy</span>
+            </h1>
+          </Link>
+        </div>
+
         <nav className="hidden gap-8 lg:flex 2xl:ml-16">
           {links.map((link, idx) => (
             <div key={idx} className="group block relative">

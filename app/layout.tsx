@@ -36,8 +36,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={lato.className}>
-        <Provider>
+      <Provider>
+        <body className={`${lato.className}`}>
           <CartProvider>
             <BeforeNavBar />
             <Navbar />
@@ -46,8 +46,8 @@ export default function RootLayout({
             <Toaster position="top-center" />
             <Footer />
           </CartProvider>
-        </Provider>
-      </body>
+        </body>
+      </Provider>
     </html>
   );
 }

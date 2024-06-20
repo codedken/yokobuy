@@ -13,6 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
+import toast from "react-hot-toast";
 
 interface UserButtonProps {
   user: User;
@@ -24,7 +25,7 @@ export default function UserButton({ user }: UserButtonProps) {
       <DropdownMenuTrigger asChild>
         <Button
           size="icon"
-          className="flex-none border-2 border-primary/30 rounded-full"
+          className="flex-none border-2 w-11 h-11 border-primary/30 rounded-full"
         >
           <Image
             src={user.image || "/avatar_placeholder.png"}
@@ -59,6 +60,7 @@ export default function UserButton({ user }: UserButtonProps) {
           <button
             onClick={() => {
               signOut({ callbackUrl: "/" });
+              toast.success("You logged out successfully...");
             }}
             className="flex w-full items-center"
           >

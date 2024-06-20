@@ -1,11 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Lock, Mail } from "lucide-react";
-import { signIn, ProviderMap } from "@/auth";
+import { signIn, ProviderMap, auth } from "@/auth";
 import Link from "next/link";
 import React from "react";
+import { redirect } from "next/navigation";
 
-const Login = () => {
+const Login = async () => {
   const names = ["google_logo_nobg"];
+
+  const session = await auth();
+
+  if (session?.user) {
+    redirect("/");
+  }
   return (
     <div className="w-full px-4 sm:px-6 lg:px-30 xl:px-44 mb-32 mt-12 gap-6 flex flex-col justify-between">
       <h2 className="text-black md:text-2xl text-xl font-semibold">LOGIN</h2>

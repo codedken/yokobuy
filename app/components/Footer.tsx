@@ -18,7 +18,7 @@ const Footer = () => {
         </h2>
         <div className="mt-8 flex items-center justify-center sm:gap-4 md:gap-16 w-full">
           <div className="h-[1px] bg-gray-300 lg:flex-grow" />
-          <div className="h-10 flex justify-center items-center w-full lg:w-4/12">
+          <div className="h-12 flex justify-center items-center w-full lg:w-4/12">
             <input
               type="email"
               placeholder="Enter your email now"
@@ -208,7 +208,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <div className="mt-10 bg-black/80 w-full flex justify-center py-4">
+      <div className="mt-10 bg-black w-full flex justify-center py-4">
         <span className="text-xs md:text-sm text-white">
           Copyrights © YokoBuy.com | May, 2024
         </span>

@@ -6,17 +6,18 @@ import { Lock, LogOut, Search, UserPlus2, X } from "lucide-react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useState } from "react";
+import SearchInput from "./SearchInput";
 
 const BeforeNavBar = () => {
   const [open, setOpen] = useState(false);
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const openSearchBar = () => {
     setOpen((prev) => !prev);
   };
 
   return (
-    <div className="lg:flex hidden items-center justify-end w-full bg-black h-12 mx-auto px-44">
+    <div className="lg:flex hidden items-center justify-end w-full bg-black h-14 mx-auto px-44">
       <div className="flex items-center">
         <div className="flex items-center">
           <p
@@ -37,52 +38,41 @@ const BeforeNavBar = () => {
             </Link>
           </p>
           <div
-            className={`relative ${open ? "w-96" : "w-0 "} flex h-11 transition-all`}
+            className={`relative ${open ? "w-96" : "w-0"} flex h-12 transition-all`}
           >
-            <input
-              type="text"
-              className={`bg-white ${open ? "w-96 py-[10px] rounded-l-sm border-r-2 border-black pl-6" : "w-0"} 
-              text-gray-800 transition-all relative outline-none placeholder:text-gray-700 placeholder:text-sm placeholder:font-light`}
-              placeholder="Search Item"
+            <SearchInput
+              style={`bg-white ${open ? "w-96 border-none" : "w-0"} 
+              text-gray-800 transition-all h-12 overflow-hidden relative outline-none
+              rounded-l-sm
+              placeholder:text-gray-700 placeholder:text-sm placeholder:font-light`}
+              inputStyle="search-input w-full flex h-full pl-6 pr-20
+            relative rounded-l-sm border-gray-400
+            outline-none focus:border-black"
             />
-            <Button
-              variant="outline"
-              className={`${!open && "hidden"} w-14 h-11 right-1 rounded-none border-none absolute`}
-            >
-              <Search />
-            </Button>
           </div>
         </div>
 
         <Button
           variant={"outline"}
-          className="rounded-none h-11 border-none"
+          className="rounded-none h-12 border-none"
           onClick={openSearchBar}
         >
           {open ? <X /> : <Search />}
         </Button>
 
         <div className="flex gap-1.5">
-          {session?.user ? (
-            <div className="ml-2 flex items-center gap-4">
-              {/* <Button
-                onClick={() => signOut()}
-                variant={"outline"}
-                className="bg-red-500 hover:bg-red-700 rounded-none h-11 border-none"
-              >
-                <LogOut className="mr-2 text-white" />
-                <span className="text-white text-xs tracking-wider">
-                  LOGOUT
-                </span>
-              </Button> */}
+          {status === "authenticated" ? (
+            <div className="ml-2 flex items-center">
               <UserButton user={session.user} />
             </div>
+          ) : status === "loading" ? (
+            <div className="ml-2 w-8 h-8 border-2 animate-spin border-r-0 border-white rounded-full" />
           ) : (
             <>
               <Button
                 onClick={() => signIn()}
                 variant={"outline"}
-                className="bg-primary hover:bg-purple-700 rounded-none h-11 border-none"
+                className="bg-primary hover:bg-purple-700 rounded-none h-12 border-none"
               >
                 <Lock className="mr-2 text-white" />
                 <span className="text-white text-xs tracking-wider">LOGIN</span>
@@ -91,7 +81,7 @@ const BeforeNavBar = () => {
               <Link href="/register">
                 <Button
                   variant={"outline"}
-                  className="bg-[#C44593] hover:bg-[#AB367E] rounded-none h-11 border-none"
+                  className="bg-[#C44593] hover:bg-[#AB367E] rounded-none h-12 border-none"
                 >
                   <UserPlus2 className="mr-2 text-white" />
                   <span className="text-white text-xs tracking-wider">

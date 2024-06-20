@@ -135,8 +135,8 @@ export default function ShoppingCartModal() {
               </Button>
             </div>
 
-            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-              <p>
+            <div className="mt-4 flex justify-center text-center text-sm text-gray-500">
+              <p className="flex flex-col gap-2">
                 OR
                 <button
                   onClick={() => handleCartClick()}

@@ -1,9 +1,16 @@
+import { auth, signIn } from "@/auth";
 import { Button } from "@/components/ui/button";
 import { Lock, Mail, Phone, User2, UserPlus2 } from "lucide-react";
-import Link from "next/link";
+import { redirect } from "next/navigation";
 import React from "react";
 
-const Register = () => {
+const Register = async () => {
+  const session = await auth();
+
+  if (session?.user) {
+    redirect("/");
+  }
+
   return (
     <div className="w-full px-4 sm:px-6 lg:px-30 xl:px-44 mb-32 mt-12 gap-6 flex flex-col justify-between">
       <h2 className="text-black md:text-2xl text-xl font-semibold">REGISTER</h2>
@@ -21,14 +28,21 @@ const Register = () => {
               date on an order&apos;s status, and keep track of the orders you
               have previously made.
             </p>
-            <Link href="/login">
+            <form
+              action={async () => {
+                "use server";
+
+                await signIn();
+              }}
+            >
               <Button
+                type="submit"
                 className="px-10 w-1/3 rounded-none border-none bg-black hover:bg-primary"
                 variant="outline"
               >
                 <span className="text-white font-semibold">LOGIN</span>
               </Button>
-            </Link>
+            </form>
           </div>
         </div>
         <div className="md:w-1/2 lg:w-1/2 w-full flex items-center flex-col">
@@ -86,22 +100,24 @@ const Register = () => {
                 />
                 <Lock className="absolute top-0 bottom-0 my-auto left-4 w-6 h-6 text-gray-600" />
               </div>
-              <div className="flex gap-4 justify-between">
-                <Link
-                  href="/"
-                  className="text-sm sm:text-base hover:underline hover:text-primary"
-                >
-                  <span className="whitespace-nowrap">Forgot Password?</span>
-                </Link>
-                <span className="flex gap-1 flex-wrap text-sm sm:text-base">
+              <div>
+                <p className="flex gap-1 flex-wrap text-sm sm:text-base">
                   Do you have an account?
-                  <Link
-                    href="/login"
-                    className="hover:underline hover:text-primary"
+                  <form
+                    action={async () => {
+                      "use server";
+                      await signIn();
+                    }}
                   >
-                    Login here
-                  </Link>
-                </span>
+                    <button
+                      type="submit"
+                      className="hover:underline text-primary 
+                    hover:text-primary cursor-pointer"
+                    >
+                      Login here
+                    </button>
+                  </form>
+                </p>
               </div>
               <div className="flex gap-4 text-sm sm:text-base">
                 <p>Subscribe to our newsletter</p>
