@@ -72,7 +72,7 @@ const BeforeNavBar = () => {
               <Button
                 onClick={() => signIn()}
                 variant={"outline"}
-                className="bg-primary hover:bg-purple-700 rounded-none h-12 border-none"
+                className="bg-[#192a66] hover:bg-[#304aa8] rounded-none h-12 border-none"
               >
                 <Lock className="mr-2 text-white" />
                 <span className="text-white text-xs tracking-wider">LOGIN</span>
@@ -81,7 +81,7 @@ const BeforeNavBar = () => {
               <Link href="/register">
                 <Button
                   variant={"outline"}
-                  className="bg-[#C44593] hover:bg-[#AB367E] rounded-none h-12 border-none"
+                  className="bg-[#761f54] hover:bg-[#AB367E] rounded-none h-12 border-none"
                 >
                   <UserPlus2 className="mr-2 text-white" />
                   <span className="text-white text-xs tracking-wider">

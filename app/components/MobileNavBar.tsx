@@ -196,7 +196,7 @@ const MobileNavBar: React.FC<Props> = ({
                     >
                       <Button
                         onClick={() => {}}
-                        className="bg-red-600 hover:bg-red-500 
+                        className="bg-[#192a66] hover:bg-[#304aa8] 
                      w-full h-full"
                         variant="ghost"
                       >
@@ -213,7 +213,7 @@ const MobileNavBar: React.FC<Props> = ({
                           toggleSideMenu();
                           signIn();
                         }}
-                        className="bg-[#192a66] w-1/2 hover:bg-[#304aa8] 
+                        className="bg-[#192a66] hover:bg-[#304aa8] w-1/2 
                         h-full"
                         variant="ghost"
                       >
