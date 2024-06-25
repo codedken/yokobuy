@@ -96,7 +96,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="mb-4 border-b border-black sticky top-0 z-50 bg-white">
+    <header className="mb-4 border-b border-black sticky top-0 z-40 bg-white">
       <MobileNavBar
         toggleSearch={toggleSearch}
         toggleSideMenu={toggleSideMenu}
@@ -122,7 +122,7 @@ export default function Navbar() {
             alt="yokobuy logo"
             width={100}
             height={100}
-            className="sm:w-10 sm:h-10 h-8 w-8"
+            className="sm:w-16 sm:h-10 h-8 w-12"
           />
           <Link href="/">
             <h1 className="text-2xl md:text-3xl font-bold">

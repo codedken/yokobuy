@@ -14,8 +14,9 @@ import CartProvider from "./components/Providers";
 import ShoppingCartModal from "./components/ShoppingCartModal";
 import BeforeNavBar from "./components/BeforeNavBar";
 import Footer from "./components/Footer";
-import Provider from "./Provider";
 import { Toaster } from "@/components/ui/toaster";
+import ProviderSession from "./components/ProviderSession";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -36,9 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Provider>
+      <ProviderSession>
         <body className={`${lato.className}`}>
           <CartProvider>
+            <Loading on={false} />
             <BeforeNavBar />
             <Navbar />
             <ShoppingCartModal />
@@ -47,7 +49,7 @@ export default function RootLayout({
             <Footer />
           </CartProvider>
         </body>
-      </Provider>
+      </ProviderSession>
     </html>
   );
 }

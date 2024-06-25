@@ -28,8 +28,13 @@ const AlertDialogMenu = ({
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>No</AlertDialogCancel>
-          <AlertDialogAction onClick={action}>Yes</AlertDialogAction>
+          <AlertDialogCancel className="font-bold">No</AlertDialogCancel>
+          <AlertDialogAction
+            className="bg-[#192a66] font-bold hover:bg-[#304aa8]"
+            onClick={action}
+          >
+            Yes
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

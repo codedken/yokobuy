@@ -1,16 +1,17 @@
-import { auth, signIn } from "@/auth";
 import { Button } from "@/components/ui/button";
-import { redirect } from "next/navigation";
 import React from "react";
+import { auth } from "@/auth";
 
 import RegForm from "../components/RegForm";
+import { redirect } from "next/navigation";
 
 const Register = async () => {
   const session = await auth();
-
-  if (session?.user) {
+  if (session?.user.phone) {
     redirect("/");
   }
+
+  console.log(session);
 
   return (
     <div className="w-full px-4 sm:px-6 lg:px-30 xl:px-44 mb-32 mt-12 gap-6 flex flex-col justify-between">
@@ -29,21 +30,14 @@ const Register = async () => {
               date on an order&apos;s status, and keep track of the orders you
               have previously made.
             </p>
-            <form
-              action={async () => {
-                "use server";
 
-                await signIn();
-              }}
+            <Button
+              type="submit"
+              className="px-10 w-1/3 rounded-none border-none bg-black hover:bg-primary"
+              variant="outline"
             >
-              <Button
-                type="submit"
-                className="px-10 w-1/3 rounded-none border-none bg-black hover:bg-primary"
-                variant="outline"
-              >
-                <span className="text-white font-semibold">LOGIN</span>
-              </Button>
-            </form>
+              <span className="text-white font-semibold">LOGIN</span>
+            </Button>
           </div>
         </div>
         <div className="md:w-1/2 lg:w-1/2 w-full flex items-center flex-col">
@@ -52,7 +46,11 @@ const Register = async () => {
               New Customer? Register
             </h2>
             <div className="">
-              <RegForm />
+              <RegForm
+                user={
+                  session?.user && !session?.user.phone ? session?.user : null
+                }
+              />
             </div>
           </div>
         </div>

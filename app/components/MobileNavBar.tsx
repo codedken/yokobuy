@@ -3,19 +3,18 @@
 import { Button } from "@/components/ui/button";
 import { Lock, LogOut, Minus, Plus, UserPlus2, X } from "lucide-react";
 import Link from "next/link";
-import { signIn, signOut, useSession } from "next-auth/react";
 import UserButton from "@/components/UserButton";
-import toast from "react-hot-toast";
+import { signIn, signOut, useSession } from "next-auth/react";
+
 import {
   SheetContent,
   SheetHeader,
   SheetTitle,
   Sheet,
   SheetFooter,
-  SheetClose,
 } from "@/components/ui/sheet";
-import { truncate } from "fs";
 import AlertDialogMenu from "./AlertDialogMenu";
+import { useToast } from "@/components/ui/use-toast";
 
 interface Props {
   toggleSearch: any;
@@ -38,7 +37,8 @@ const MobileNavBar: React.FC<Props> = ({
   expandMenu,
   expandMenu2,
 }) => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
+  const { toast } = useToast();
   return (
     <>
       <Sheet open={open} onOpenChange={toggleSideMenu}>
@@ -52,7 +52,14 @@ const MobileNavBar: React.FC<Props> = ({
                 className={`flex lg:hidden items-center 
              gap-4 duration-700 transition-all`}
               >
-                {session?.user && <UserButton user={session.user} />}
+                {status === "loading" ? (
+                  <div
+                    className="animate-spin ml-2 w-8 h-8 rounded-full 
+            border-white border-4 border-t-primary"
+                  />
+                ) : (
+                  session?.user && <UserButton user={session.user} />
+                )}
                 <Link href="/" className={`${searchOpen ? "hidden" : "flex"}`}>
                   <h1 className="text-2xl md:text-3xl font-bold">
                     Yoko<span className="text-primary">Buy</span>
@@ -191,13 +198,15 @@ const MobileNavBar: React.FC<Props> = ({
                     <AlertDialogMenu
                       action={() => {
                         signOut({ callbackUrl: "/" });
-                        toast.success("You logged out successfully...");
+                        toast({
+                          title: "Logged Out",
+                          description: "You logged out successfully...",
+                        });
                       }}
                     >
                       <Button
-                        onClick={() => {}}
-                        className="bg-[#192a66] hover:bg-[#304aa8] 
-                     w-full h-full"
+                        className="bg-[#192a66] hover:bg-[#304aa8] w-full 
+                        h-full"
                         variant="ghost"
                       >
                         <LogOut className="mr-2 text-white" />
@@ -210,7 +219,6 @@ const MobileNavBar: React.FC<Props> = ({
                     <>
                       <Button
                         onClick={() => {
-                          toggleSideMenu();
                           signIn();
                         }}
                         className="bg-[#192a66] hover:bg-[#304aa8] w-1/2 

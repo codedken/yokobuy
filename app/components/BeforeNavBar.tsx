@@ -2,11 +2,11 @@
 
 import UserButton from "@/components/UserButton";
 import { Button } from "@/components/ui/button";
-import { Lock, LogOut, Search, UserPlus2, X } from "lucide-react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { Lock, Search, UserPlus2, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import SearchInput from "./SearchInput";
+import { signIn, useSession } from "next-auth/react";
 
 const BeforeNavBar = () => {
   const [open, setOpen] = useState(false);
@@ -61,12 +61,15 @@ const BeforeNavBar = () => {
         </Button>
 
         <div className="flex gap-1.5">
-          {status === "authenticated" ? (
+          {status === "loading" ? (
+            <div
+              className="animate-spin ml-2 w-8 h-8 rounded-full 
+            border-white border-4 border-t-primary"
+            />
+          ) : session?.user ? (
             <div className="ml-2 flex items-center">
               <UserButton user={session.user} />
             </div>
-          ) : status === "loading" ? (
-            <div className="ml-2 w-8 h-8 border-2 animate-spin border-r-0 border-white rounded-full" />
           ) : (
             <>
               <Button

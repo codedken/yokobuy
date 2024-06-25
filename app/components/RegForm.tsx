@@ -11,21 +11,21 @@ import {
 } from "@/components/ui/form";
 import { useToast } from "@/components/ui/use-toast";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Lock, Mail, Phone, User2, UserPlus2 } from "lucide-react";
+import { Lock, Mail, Phone, User2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { User } from "next-auth";
 
 const FormSchema = z
   .object({
-    firstname: z
+    name: z
       .string()
       .min(1, {
-        message: "firstname is required",
+        message: "name is required",
       })
       .max(100),
-    lastname: z.string().min(1, {
-      message: "lastname is required",
-    }),
     email: z
       .string()
       .min(1, {
@@ -47,30 +47,58 @@ const FormSchema = z
     message: "Password do not match",
   });
 
-const RegForm = () => {
+interface RegFormProps {
+  user: User | null;
+}
+const RegForm = ({ user }: RegFormProps) => {
   const { toast } = useToast();
-  function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
+  const router = useRouter();
+  const [progress, setProgress] = useState(false);
+
+  const onSubmit = async (data: z.infer<typeof FormSchema>) => {
+    setProgress(true);
+    const response = await fetch("/api/user", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        password: data.password,
+      }),
     });
-  }
+
+    if (response.ok) {
+      setProgress(false);
+      router.push("/login");
+    } else if (response.status === 409) {
+      setProgress(false);
+      toast({
+        title: "Registration failed",
+        description: "User with this email already exists!",
+      });
+    } else {
+      setProgress(false);
+      toast({
+        title: "Registration failed",
+        description: "Something went wrong!",
+      });
+    }
+  };
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      firstname: "",
-      lastname: "",
-      email: "",
+      name: user?.name || "",
+      email: user?.email || "",
       phone: "",
       password: "",
       confirmpassword: "",
     },
   });
+
   return (
     <Form {...form}>
       <form
@@ -79,17 +107,20 @@ const RegForm = () => {
       >
         <FormField
           control={form.control}
-          name="firstname"
+          name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>First Name *</FormLabel>
+              <div className="flex justify-between items-center">
+                <FormLabel className="text-gray-500">Name *</FormLabel>
+                <FormMessage />
+              </div>
 
               <div className="w-full relative">
                 <FormControl className="w-full py-3 pr-6 pl-14">
                   <input
                     type="text"
-                    placeholder="First Name"
-                    className="bg-gray-200 outline-none"
+                    placeholder="Your Name"
+                    className={`bg-gray-200 ${user && "pointer-events-none"} outline-none`}
                     {...field}
                   />
                 </FormControl>
@@ -100,31 +131,13 @@ const RegForm = () => {
         />
         <FormField
           control={form.control}
-          name="lastname"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Last Name *</FormLabel>
-
-              <div className="w-full relative">
-                <FormControl className="w-full py-3 pr-6 pl-14">
-                  <input
-                    {...field}
-                    type="text"
-                    placeholder="Last Name"
-                    className="bg-gray-200 outline-none"
-                  />
-                </FormControl>
-                <UserPlus2 className="absolute top-0 bottom-0 my-auto left-4 w-6 h-6 text-gray-600" />
-              </div>
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email Address *</FormLabel>
+              <div className="flex justify-between items-center">
+                <FormLabel className="text-gray-500">Email Address *</FormLabel>
+                <FormMessage />
+              </div>
 
               <div className="w-full relative">
                 <FormControl className="w-full py-3 pr-6 pl-14">
@@ -132,7 +145,7 @@ const RegForm = () => {
                     {...field}
                     type="email"
                     placeholder="Email Address"
-                    className="bg-gray-200 outline-none"
+                    className={`bg-gray-200 ${user && "pointer-events-none"} outline-none`}
                   />
                 </FormControl>
                 <Mail className="absolute top-0 bottom-0 my-auto left-4 w-6 h-6 text-gray-600" />
@@ -145,7 +158,10 @@ const RegForm = () => {
           name="phone"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Phone Number *</FormLabel>
+              <div className="flex justify-between items-center">
+                <FormLabel className="text-gray-500">Phone Number *</FormLabel>
+                <FormMessage />
+              </div>
 
               <div className="w-full relative">
                 <FormControl className="w-full py-3 pr-6 pl-14">
@@ -166,7 +182,10 @@ const RegForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Password *</FormLabel>
+              <div className="flex justify-between items-center">
+                <FormLabel className="text-gray-500">Password *</FormLabel>
+                <FormMessage />
+              </div>
 
               <div className="w-full relative">
                 <FormControl className="w-full py-3 pr-6 pl-14">
@@ -187,7 +206,12 @@ const RegForm = () => {
           name="confirmpassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Confirm Password *</FormLabel>
+              <div className="flex justify-between items-center">
+                <FormLabel className="text-gray-500">
+                  Confirm Password *
+                </FormLabel>
+                <FormMessage />
+              </div>
 
               <div className="w-full relative">
                 <FormControl className="w-full py-3 pr-6 pl-14">
@@ -234,9 +258,18 @@ const RegForm = () => {
 
         <Button
           type="submit"
-          className="group w-1/4 bg-black hover:bg-black text-white font-bold border-none rounded-none"
+          className="group w-fit bg-black hover:bg-black 
+          text-white font-bold border-none rounded-none 
+          flex gap-2 items-center"
           variant="outline"
         >
+          {progress && (
+            <div
+              className="animate-spin w-5 h-5 border-4 border-gray-500
+           border-t-white rounded-full"
+            />
+          )}
+
           <span className="text-white text-xs sm:text-sm group-hover:underline">
             REGISTER
           </span>

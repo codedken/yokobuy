@@ -11,10 +11,10 @@ import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart";
 import QtyModBtn from "./QtyModBtn";
 import { X } from "lucide-react";
-import toast from "react-hot-toast";
-import { signIn, useSession } from "next-auth/react";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function ShoppingCartModal() {
+  const { toast } = useToast();
   const {
     addItem,
     cartCount,
@@ -25,8 +25,6 @@ export default function ShoppingCartModal() {
     totalPrice,
     redirectToCheckout,
   } = useShoppingCart();
-
-  const { data: session } = useSession();
 
   async function handleCheckoutClick(event: any) {
     event.preventDefault();
@@ -43,7 +41,7 @@ export default function ShoppingCartModal() {
 
   return (
     <Sheet open={shouldDisplayCart} onOpenChange={() => handleCartClick()}>
-      <SheetContent className="sm:max-w-lg w-[90vw]">
+      <SheetContent className="px-3 sm:px-5 py-6 sm:max-w-lg w-[90vw]">
         <SheetHeader>
           <SheetTitle>Shopping Cart</SheetTitle>
         </SheetHeader>
@@ -106,7 +104,7 @@ export default function ShoppingCartModal() {
               )}
             </ul>
           </div>
-          <div className="border-t border-gray-200 px-2 py-6 sm:px-6">
+          <div className="border-t border-gray-200 px-3 sm:px-4 py-6">
             <div className="flex justify-between text-base font-medium text-gray-900">
               <p>Subtotal:</p>
               <p>${totalPrice}</p>
@@ -120,13 +118,12 @@ export default function ShoppingCartModal() {
                 onClick={
                   cartCount === 0
                     ? () => {
-                        toast.dismiss();
-                        toast.error("No items in the cart to Checkout", {
-                          position: "top-center",
+                        toast({
+                          description: "No items in the cart to Checkout",
                         });
                       }
                     : (e) => {
-                        session?.user ? handleCheckoutClick(e) : signIn();
+                        handleCheckoutClick(e);
                       }
                 }
                 className="w-full"
