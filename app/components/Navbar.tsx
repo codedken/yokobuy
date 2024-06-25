@@ -122,10 +122,10 @@ export default function Navbar() {
             alt="yokobuy logo"
             width={100}
             height={100}
-            className="sm:w-16 sm:h-10 h-8 w-12"
+            className="sm:w-16 sm:h-10 h-6 w-8"
           />
           <Link href="/">
-            <h1 className="text-2xl md:text-3xl font-bold">
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">
               Yoko<span className="text-primary">Buy</span>
             </h1>
           </Link>
