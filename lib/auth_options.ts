@@ -4,7 +4,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import prisma from "@/lib/prisma";
 import { compare } from "bcrypt";
 
-export const authOptions = {
+export const authOptions: any = {
   adapter: PrismaAdapter(prisma),
   pages: {
     signIn: "/login",
