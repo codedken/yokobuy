@@ -6,6 +6,7 @@ import { compare } from "bcrypt";
 
 export const authOptions: any = {
   adapter: PrismaAdapter(prisma),
+  secret: "randomword",
   pages: {
     signIn: "/login",
   },
