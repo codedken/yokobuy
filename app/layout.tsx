@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import ProviderSession from "./components/ProviderSession";
 import Loading from "./loading";
+import { Suspense } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 const lato = Lato({
@@ -40,11 +41,11 @@ export default function RootLayout({
       <ProviderSession>
         <body className={`${lato.className}`}>
           <CartProvider>
-            <Loading on={false} />
             <BeforeNavBar />
             <Navbar />
             <ShoppingCartModal />
-            {children}
+            <Suspense fallback={<Loading />}>{children}</Suspense>
+
             <Toaster />
             <Footer />
           </CartProvider>

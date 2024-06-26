@@ -6,7 +6,7 @@ import { Lock, Search, UserPlus2, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import SearchInput from "./SearchInput";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 const BeforeNavBar = () => {
   const [open, setOpen] = useState(false);
@@ -72,14 +72,17 @@ const BeforeNavBar = () => {
             </div>
           ) : (
             <>
-              <Button
-                onClick={() => signIn()}
-                variant={"outline"}
-                className="bg-[#192a66] hover:bg-[#304aa8] rounded-none h-12 border-none"
-              >
-                <Lock className="mr-2 text-white" />
-                <span className="text-white text-xs tracking-wider">LOGIN</span>
-              </Button>
+              <Link href="/login">
+                <Button
+                  variant={"outline"}
+                  className="bg-[#192a66] hover:bg-[#304aa8] rounded-none h-12 border-none"
+                >
+                  <Lock className="mr-2 text-white" />
+                  <span className="text-white text-xs tracking-wider">
+                    LOGIN
+                  </span>
+                </Button>
+              </Link>
 
               <Link href="/register">
                 <Button

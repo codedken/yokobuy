@@ -1,4 +1,4 @@
-import { auth } from "@/auth";
+import { auth, unstable_update } from "@/auth";
 import prisma from "@/lib/prisma";
 import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
@@ -34,6 +34,11 @@ export async function POST(req: Request) {
           phone,
           password: hashedPassword,
         },
+      });
+
+      await unstable_update({
+        ...session,
+        user: { ...session.user, phone: updatedUser.phone },
       });
 
       const { password: newUserPassword, ...rest } = updatedUser;

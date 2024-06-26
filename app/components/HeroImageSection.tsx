@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { client, urlFor } from "../lib/sanity";
-import { auth } from "@/auth";
 
 const getData = async () => {
   const query = "*[_type == 'heroImage'][0]";
@@ -16,9 +15,6 @@ const getData = async () => {
   return data;
 };
 const HeroImageSection = async () => {
-  const session = await auth();
-
-  console.log(session);
   const data = await getData();
   return (
     <div className="relative mb-12 flex justify-center items-center w-full md:mb-16 lg:w-2/3">

@@ -11,8 +11,6 @@ const Register = async () => {
     redirect("/");
   }
 
-  console.log(session);
-
   return (
     <div className="w-full px-4 sm:px-6 lg:px-30 xl:px-44 mb-32 mt-12 gap-6 flex flex-col justify-between">
       <h2 className="text-black md:text-2xl text-xl font-semibold">REGISTER</h2>

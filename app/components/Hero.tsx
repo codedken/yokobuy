@@ -1,8 +1,15 @@
 import Link from "next/link";
 import SearchInput from "./SearchInput";
 import HeroImageSection from "./HeroImageSection";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-const Hero = () => {
+const Hero = async () => {
+  const session = await auth();
+
+  if (session?.user && !session?.user.phone) {
+    redirect("/register");
+  }
   return (
     <section className="mx-auto px-4 sm:px-6 sm:pb-6 lg:max-w-7xl lg:px-8">
       <div className="mb-8 flex flex-wrap justify-between md:mb-16">

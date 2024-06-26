@@ -13,10 +13,12 @@ import QtyModBtn from "./QtyModBtn";
 import { X } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function ShoppingCartModal() {
   const { toast } = useToast();
   const { data: session } = useSession();
+  const router = useRouter();
   const {
     addItem,
     cartCount,
@@ -34,7 +36,7 @@ export default function ShoppingCartModal() {
     try {
       const result = await redirectToCheckout();
       if (result?.error) {
-        console.log("result");
+        console.log(result.error);
       }
     } catch (err) {
       console.log(err);
@@ -127,9 +129,13 @@ export default function ShoppingCartModal() {
                     : (e) => {
                         if (!session?.user) {
                           signIn();
+                        } else if (session.user && !session.user.phone) {
+                          router.push("/register");
                         } else {
                           handleCheckoutClick(e);
                         }
+
+                        handleCartClick();
                       }
                 }
                 className="w-full bg-[#761f54] hover:bg-[#AB367E]"
