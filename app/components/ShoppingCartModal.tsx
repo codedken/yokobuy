@@ -12,9 +12,11 @@ import { useShoppingCart } from "use-shopping-cart";
 import QtyModBtn from "./QtyModBtn";
 import { X } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
+import { signIn, useSession } from "next-auth/react";
 
 export default function ShoppingCartModal() {
   const { toast } = useToast();
+  const { data: session } = useSession();
   const {
     addItem,
     cartCount,
@@ -123,10 +125,14 @@ export default function ShoppingCartModal() {
                         });
                       }
                     : (e) => {
-                        handleCheckoutClick(e);
+                        if (!session?.user) {
+                          signIn();
+                        } else {
+                          handleCheckoutClick(e);
+                        }
                       }
                 }
-                className="w-full"
+                className="w-full bg-[#761f54] hover:bg-[#AB367E]"
               >
                 Checkout
               </Button>
@@ -137,7 +143,7 @@ export default function ShoppingCartModal() {
                 OR
                 <button
                   onClick={() => handleCartClick()}
-                  className="font-medium text-primary hover:text-primary/80"
+                  className="font-medium text-[#761f54] hover:text-[#AB367E]"
                 >
                   Continue Shopping
                 </button>

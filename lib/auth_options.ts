@@ -51,6 +51,7 @@ export const authOptions: any = {
           id: existingUser.id,
           name: existingUser.name,
           email: existingUser.email,
+          image: existingUser.image,
           phone: existingUser.phone,
         };
       },
